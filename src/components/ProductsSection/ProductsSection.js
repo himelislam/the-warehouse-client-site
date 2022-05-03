@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import ProductCard from '../ProductCard/ProductCard';
 
-const Inventories = () => {
+const ProductsSection = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -27,4 +27,4 @@ const Inventories = () => {
     );
 };
 
-export default Inventories;
+export default ProductsSection;

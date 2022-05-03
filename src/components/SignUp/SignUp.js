@@ -2,9 +2,10 @@ import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { async } from '@firebase/util';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -14,7 +15,10 @@ const SignUp = () => {
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
+
     const [updateProfile, updating, error1] = useUpdateProfile(auth);
+
+    const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth);
 
     const handleUserSignUp = async event  => {
         event.preventDefault();
@@ -23,6 +27,8 @@ const SignUp = () => {
         const password = event.target.password.value;
         await createUserWithEmailAndPassword(email, password)
         await updateProfile({displayName})
+        await sendEmailVerification()
+        toast('Email verification mail sent')
         console.log(email, password);
     }
 
