@@ -7,7 +7,7 @@ const ProductsSection = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('product.json')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -18,7 +18,7 @@ const ProductsSection = () => {
                 <Row xs={1} md={2} lg={3} className="g-4">
                 {
                     products.slice(0, 6).map(product => <ProductCard
-                        key={product.id}
+                        key={product._id}
                         product={product}
                     ></ProductCard>)
                 }

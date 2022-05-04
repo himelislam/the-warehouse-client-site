@@ -5,12 +5,27 @@ import TableRow from '../TableRow/TableRow';
 
 const ManageItems = () => {
     const [products, setProducts] = useState([]);
+    const [isReload, setIsReload] = useState(false)
 
     useEffect(() => {
-        fetch('product.json')
+        fetch('http://localhost:5000/products')
         .then(res => res.json())
         .then(data => setProducts(data))
-    },[])
+    },[isReload])
+
+    const handleDeleteItem = (id) => {
+        const url = `http://localhost:5000/product/${id}`
+        fetch(url,{
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.deletedCount > 0){
+                setIsReload(!isReload)
+            }
+        })
+
+    }
     return (
         <div className='container'>
             <h2 className='text-center my-4'>Manage Inventory</h2>
@@ -27,7 +42,11 @@ const ManageItems = () => {
                 </thead>
                 <tbody>
                     {
-                        products.map(product => <TableRow key={product.id} product={product}></TableRow>)
+                        products.map(product => <TableRow 
+                            key={product._id} 
+                            product={product}
+                            handleDeleteItem={handleDeleteItem} 
+                        ></TableRow>)
                     }
                 </tbody>
             </Table>

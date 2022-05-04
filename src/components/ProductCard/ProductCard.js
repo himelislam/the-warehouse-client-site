@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
                                 <p><small>Supplier Name: {product.supplier}</small></p>
                                 {product.description}
                             </Card.Text>
-                            <Link to={`inventory/${product.id}`}><button className='btn btn-secondary w-100'>Update</button></Link>
+                            <Link to={`inventory/${product._id}`}><button className='btn btn-secondary w-100'>Update</button></Link>
                         </Card.Body>
                     </Card>
                 </Col>
