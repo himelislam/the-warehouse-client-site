@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 
 const Inventory = () => {
@@ -9,18 +9,8 @@ const Inventory = () => {
             <h2 className='text-center my-4'>Update Inventory{id}</h2>
             <div>
                 <Row xs={1} md={2} lg={2} className="g-4">
-                    {/* {Array.from({ length: 2 }).map((_, idx) => ( */}
                     <Col>
                         <Card>
-                            {/* <Card.Img variant="top" src="https://hatil.com/sites/default/files/Obsession-151%20Bed%20HATIL%20%20modern%20bedroom%20online%20buy%20Bangladesh%20low%20price.jpg" />
-                            <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
-                                <Card.Text>
-                                    Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.
-                                </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body> */}
                             <Card.Title className='fw-semibold fs-1 text-center mt-4'>Product Details</Card.Title>
                             <Card.Img className='p-3' variant="top" src="https://hatil.com/sites/default/files/Obsession-151%20Bed%20HATIL%20%20modern%20bedroom%20online%20buy%20Bangladesh%20low%20price.jpg" />
                             <Card.Body>
@@ -50,7 +40,7 @@ const Inventory = () => {
                                         <h4 className='text-center fw-light mb-3'>Product Name : Bed Obbsession</h4>
                                         <h5 className='text-center fw-light mb-3'>Product Quantity : 20</h5>
                                         <form className='text-center mb-4'>
-                                            <input className='bg-white d-block w-100 rounded' type="number" name="quantity" id="" />
+                                            <input className='bg-white d-block w-100 rounded p-2 border border-dark' type="number" name="quantity" id="" />
                                             <input className='btn btn-secondary w-100 my-3' type="submit" value="Restock" />
                                         </form>
                                     </div>
