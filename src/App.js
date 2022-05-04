@@ -8,6 +8,9 @@ import Inventory from './components/Inventory/Inventory';
 import RequireAuth from './RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ManageItems from './components/ManageItems/ManageItems';
+import AddItems from './components/AddItems/AddItems';
+import MyItems from './components/MyItems/MyItems';
 
 function App() {
   return (
@@ -17,9 +20,24 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='home' element={<Home></Home>}></Route>
         <Route path='inventory/:id' element={
-        <RequireAuth>
-          <Inventory></Inventory>
-        </RequireAuth>
+          <RequireAuth>
+            <Inventory></Inventory>
+          </RequireAuth>
+        }></Route>
+        <Route path='manageInventory' element={
+          <RequireAuth>
+            <ManageItems></ManageItems>
+          </RequireAuth>
+        }></Route>
+        <Route path='addItem' element={
+          <RequireAuth>
+            <AddItems></AddItems>
+          </RequireAuth>
+        }></Route>
+        <Route path='myItem' element={
+          <RequireAuth>
+            <MyItems></MyItems>
+          </RequireAuth>
         }></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<SignUp></SignUp>}></Route>

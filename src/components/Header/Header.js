@@ -27,24 +27,54 @@ const Header = () => {
                             >
                                 Home
                             </NavLink>
-                            <NavLink
+                            {
+                                user?
+                                <NavLink
                                 className={({ isActive }) => (isActive ? "text-decoration-none text-white me-3" : "text-decoration-none text-secondary me-3")}
-                                to='/services'
+                                to='/manageInventory'
                             >
-                                Services
+                                Manage Item
                             </NavLink>
+                            :
                             <NavLink
-                                className={({ isActive }) => (isActive ? "text-decoration-none text-white me-3" : "text-decoration-none text-secondary me-3")}
-                                to='/blogs'
+                                className={({ isActive }) => (isActive ? "text-decoration-none text-white " : "text-decoration-none text-secondary")}
+                                to='/signup'
                             >
-                                Blogs
+                                {/* Sign up */}
                             </NavLink>
+                            }
+                            {
+                                user?
+                                <NavLink
+                                className={({ isActive }) => (isActive ? "text-decoration-none text-white me-3" : "text-decoration-none text-secondary me-3")}
+                                to='/addItem'
+                            >
+                                Add Item
+                            </NavLink>
+                            :
                             <NavLink
-                                className={({ isActive }) => (isActive ? "text-decoration-none text-white me-3" : "text-decoration-none text-secondary me-3")}
-                                to='/about'
+                                className={({ isActive }) => (isActive ? "text-decoration-none text-white" : "text-decoration-none text-secondary")}
+                                to='/signup'
                             >
-                                About
+                                {/* Sign up */}
                             </NavLink>
+                            }
+                            {
+                                user?
+                                <NavLink
+                                className={({ isActive }) => (isActive ? "text-decoration-none text-white me-3" : "text-decoration-none text-secondary me-3")}
+                                to='/myItem'
+                            >
+                                My Item
+                            </NavLink>
+                            :
+                            <NavLink
+                                className={({ isActive }) => (isActive ? "text-decoration-none text-white" : "text-decoration-none text-secondary ")}
+                                to='/signup'
+                            >
+                                {/* Sign up */}
+                            </NavLink>
+                            }
                             {
                                 user ? 
                                 <NavLink
