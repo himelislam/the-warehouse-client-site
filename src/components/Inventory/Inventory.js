@@ -31,6 +31,29 @@ const Inventory = () => {
             }
         })
     }
+
+    const handleRestockItem = event =>{
+        event.preventDefault();
+        const quantity = event.target.quantity.value;
+        const newQuantity = parseInt(quantity) + parseInt(product.quantity);
+        console.log(newQuantity);
+        const url = `http://localhost:5000/product/restock/${id}`
+        fetch(url, {
+            method : 'PATCH',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify({newQuantity})
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.matchedCount > 0){
+                setIsReload(!isReload);
+                console.log('hello');
+                alert('new stock added')
+            }
+        })
+    }
     return (
         <div className='container'>
             <h2 className='text-center my-4'>Update Inventory</h2>
@@ -65,7 +88,7 @@ const Inventory = () => {
                                         <p className='fw-light fs-2 text-center my-4'>Restock The Item</p>
                                         <h4 className='text-center fw-light mb-3'>Product Name : {product.name}</h4>
                                         <h5 className='text-center fw-light mb-3'>Product Quantity : {product.quantity}</h5>
-                                        <form className='text-center mb-4'>
+                                        <form onSubmit={handleRestockItem} className='text-center mb-4'>
                                             <input className='bg-white d-block w-100 rounded p-2 border border-dark' type="number" name="quantity" id="" />
                                             <input className='btn btn-secondary w-100 my-3' type="submit" value="Restock" />
                                         </form>
