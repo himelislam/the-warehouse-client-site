@@ -20,7 +20,7 @@ const AddItems = () => {
             email : user.email
         }
         console.log(newProduct);
-        fetch('http://localhost:5000/myItems', {
+        fetch('https://young-spire-99179.herokuapp.com/myItems', {
             method : 'POST',
             headers : {
                 'content-type' : 'application/json'
@@ -29,7 +29,7 @@ const AddItems = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if(data.acknowledged){
                 alert('New Item Added Successfully')
                 event.target.reset()

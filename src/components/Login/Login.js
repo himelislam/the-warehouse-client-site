@@ -28,11 +28,24 @@ const Login = () => {
         const password = event.target.password.value;
         signInWithEmailAndPassword(email, password)
         // console.log(email, password);
+        fetch('https://young-spire-99179.herokuapp.com/getToken',{
+            method : 'POST',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify({email})
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            localStorage.setItem('accessToken', data.accessToken);
+            navigate(from, { replace: true })
+        })
     }
 
     if (user) {
         console.log(user);
-        navigate(from, { replace: true })
+        // navigate(from, { replace: true })
     }
 
     const handleResetPassword = async () => {
@@ -47,7 +60,8 @@ const Login = () => {
         }
     }
     return (
-        <div style={{ minHeight: "400px" }} className='w-50 mx-auto bg-secondary p-4 rounded my-5 py-5'>
+        <div className='row'>
+            <div style={{ minHeight: "400px" }} className='col-lg-6 col-md-8 col-10 mx-auto bg-secondary p-4 rounded my-5 py-5'>
             <Form onSubmit={handleLoginWithEmailAndPassword}>
                 <Form.Group className="mb-4" controlId="formBasicEmail">
                     <Form.Control className='bg-dark b-none text-white p-3' ref={emailRef} name='email' type="email" placeholder="Enter email" />
@@ -70,6 +84,7 @@ const Login = () => {
             </Form>
 
             <SocialLogin></SocialLogin>
+        </div>
         </div>
     );
 };

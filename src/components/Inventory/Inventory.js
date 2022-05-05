@@ -8,14 +8,14 @@ const Inventory = () => {
     const [isReload, setIsReload] = useState(false);
 
     useEffect(() => {
-        const url = `http://localhost:5000/product/${id}`
+        const url = `https://young-spire-99179.herokuapp.com/product/${id}`
         fetch(url)
         .then(res => res.json())
         .then(data => setProduct(data))
     },[isReload])
 
     const handleDeleverItem = id => {
-        const url = `http://localhost:5000/product/${id}`
+        const url = `https://young-spire-99179.herokuapp.com/product/${id}`
         fetch(url, {
             method : 'PATCH',
             headers : {
@@ -37,7 +37,7 @@ const Inventory = () => {
         const quantity = event.target.quantity.value;
         const newQuantity = parseInt(quantity) + parseInt(product.quantity);
         console.log(newQuantity);
-        const url = `http://localhost:5000/product/restock/${id}`
+        const url = `https://young-spire-99179.herokuapp.com/product/restock/${id}`
         fetch(url, {
             method : 'PATCH',
             headers : {
@@ -56,7 +56,7 @@ const Inventory = () => {
         })
     }
     return (
-        <div className='container'>
+        <div style={{minHeight : '70vh'}} className='container'>
             <h2 className='text-center my-4'>Update Inventory</h2>
             <div>
                 <Row xs={1} md={2} lg={2} className="g-4">
@@ -69,6 +69,7 @@ const Inventory = () => {
                                     <p className='fw-light fs-4'>Price: {product.price}</p>
                                     <p className='fw-bold'>Quantity: {product.quantity}</p>
                                     <p><small>Supplier Name: {product.supplier}</small></p>
+                                    <h6>Sold: {product.sold}</h6>
                                     <p>{product.description}</p>
                                 </Card.Text>
                             </Card.Body>

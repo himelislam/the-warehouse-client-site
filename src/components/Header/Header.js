@@ -27,6 +27,12 @@ const Header = () => {
                             >
                                 Home
                             </NavLink>
+                            <NavLink
+                                className={({ isActive }) => (isActive ? "text-decoration-none text-white me-3" : "text-decoration-none text-secondary me-3")}
+                                to='/blogs'
+                            >
+                                Blogs
+                            </NavLink>
                             {
                                 user?
                                 <NavLink

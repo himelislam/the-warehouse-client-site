@@ -12,9 +12,9 @@ const ProductCard = ({ product }) => {
                         <Card.Body>
                             <Card.Title className='fs-3'>{product.name}</Card.Title>
                             <Card.Text>
-                                <p className='fw-light'>Price: {product.price}</p>
-                                <p className='fw-bold'>Quantity: {product.quantity}</p>
-                                <p><small>Supplier Name: {product.supplier}</small></p>
+                                <h6 className='fw-light'>Price: {product.price}</h6>
+                                <h6 className='fw-bold'>Quantity: {product.quantity}</h6>
+                                <h6><small>Supplier Name: {product.supplier}</small></h6>
                                 {product.description}
                             </Card.Text>
                             <Link to={`inventory/${product._id}`}><button className='btn btn-secondary w-100'>Update</button></Link>
