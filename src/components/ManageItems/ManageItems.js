@@ -15,16 +15,18 @@ const ManageItems = () => {
 
     const handleDeleteItem = (id) => {
         const url = `http://localhost:5000/product/${id}`
-        fetch(url,{
-            method: 'DELETE'
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.deletedCount > 0){
-                setIsReload(!isReload)
-            }
-        })
-
+        const proceed = window.confirm('Are you Sure to Delete this Item?')
+        if(proceed){
+            fetch(url,{
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.deletedCount > 0){
+                    setIsReload(!isReload)
+                }
+            })    
+        }
     }
     return (
         <div className='container'>

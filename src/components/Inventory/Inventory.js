@@ -49,8 +49,9 @@ const Inventory = () => {
         .then(data => {
             if(data.matchedCount > 0){
                 setIsReload(!isReload);
-                console.log('hello');
+                console.log(data);
                 alert('new stock added')
+                event.target.reset()
             }
         })
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 
 
-const MyItemCard = ({product}) => {
+const MyItemCard = ({product, handleDeleteMyItem}) => {
     return (
         <div>
             {Array.from({ length: 1 }).map((_, idx) => (
@@ -17,7 +17,7 @@ const MyItemCard = ({product}) => {
                                 <p><small>Supplier Name: {product.supplier}</small></p>
                                 {product.description}
                             </Card.Text>
-                            <button className='btn btn-danger w-100'>Delete</button>
+                            <button onClick={()=>handleDeleteMyItem(product._id)} className='btn btn-danger w-100'>Delete</button>
                         </Card.Body>
                     </Card>
                 </Col>
