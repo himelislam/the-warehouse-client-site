@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { async } from '@firebase/util';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { toast } from 'react-toastify';
+import Loading from '../Loading/Loading';
 
 const SignUp = () => {
     const navigate = useNavigate();
+    const location = useLocation()
+    const [errorMessage, setErrorMessage] = useState('');
     const [
         createUserWithEmailAndPassword,
         user,
@@ -20,21 +23,50 @@ const SignUp = () => {
 
     const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth);
 
+    const from = location.state?.from?.pathname || "/";
+
     const handleUserSignUp = async event => {
         event.preventDefault();
         const displayName = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        await createUserWithEmailAndPassword(email, password)
-        await updateProfile({ displayName })
-        await sendEmailVerification()
-        toast('Email verification mail sent')
+        const confirmPassword = event.target.confirmPassword.value;
+        if(password === confirmPassword){
+            await createUserWithEmailAndPassword(email, password)
+
+            fetch('https://young-spire-99179.herokuapp.com/getToken',{
+            method : 'POST',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify({email})
+        })
+        .then(res => res.json())
+        .then(data => {
+            localStorage.setItem('accessToken', data.accessToken);
+            const token = data.accessToken;
+            if(token){
+                navigate(from, { replace: true })
+            }
+        })
+
+            await updateProfile({ displayName })
+            await sendEmailVerification()
+            toast('Email verification mail sent')
+        }
+        else{
+            setErrorMessage('Your Password Mismatched')
+        }
         console.log(email, password);
+    }
+
+    if(updating || sending || loading){
+        <Loading></Loading>
     }
 
     if (user) {
         console.log(user);
-        navigate('/')
+        // navigate('/')
     }
     return (
         <div className='row'>
@@ -60,7 +92,7 @@ const SignUp = () => {
                         <p>Already Have An Account?  <span className='text-info btn p-0 mb-1' onClick={() => navigate('/login')}>Login Here</span></p>
                     </Form.Group>
 
-                    <p className='text-white'>{error?.message}</p>
+                    <p className='text-white'>{error?.message} {errorMessage}</p>
 
                     <Button className='btn btn-dark w-50 mx-auto p-2 fs-5 d-block fw-light' variant="primary" type="submit">
                         Sign Up

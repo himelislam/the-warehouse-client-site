@@ -12,21 +12,26 @@ const ProductsSection = () => {
             .then(data => setProducts(data))
     }, [])
     return (
-        <div className='my-5 container'>
+        <div className='mb-4 container'>
+            <hr />
             <h2 className='text-center fw-light my-4'>Inventory Products {products.length}</h2>
-            <div className=''>
+            <hr />
+            <div className='mb-4'>
                 <Row xs={1} md={2} lg={3} className="g-4">
-                {
-                    products.slice(0, 6).map(product => <ProductCard
-                        key={product._id}
-                        product={product}
-                    ></ProductCard>)
-                }
+                    {
+                        products.slice(0, 6).map(product => <ProductCard
+                            key={product._id}
+                            product={product}
+                        ></ProductCard>)
+                    }
                 </Row>
             </div>
-            
-                <Link to='/manageInventory'><button className='btn btn-dark text-center w-50 p-2 d-block mx-auto my-4'>Manage Inventory</button></Link>
-           
+            <div className='mb-4'>
+                <Link to='/manageInventory'><button className='btn btn-dark text-center w-50 p-2 d-block mx-auto mb-4'>Manage Inventory</button></Link>
+
+                <hr />
+
+            </div>
         </div>
     );
 };

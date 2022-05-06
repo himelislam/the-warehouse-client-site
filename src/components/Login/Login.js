@@ -1,9 +1,12 @@
+import { async } from '@firebase/util';
+import { signOut } from 'firebase/auth';
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
@@ -22,11 +25,19 @@ const Login = () => {
 
     const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
 
-    const handleLoginWithEmailAndPassword = event => {
+    if(error){
+        navigate('/login')
+    }
+
+    if(loading || sending){
+        <Loading></Loading>
+    }
+
+    const handleLoginWithEmailAndPassword = async event => {
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
-        signInWithEmailAndPassword(email, password)
+        await signInWithEmailAndPassword(email, password)
         // console.log(email, password);
         fetch('https://young-spire-99179.herokuapp.com/getToken',{
             method : 'POST',
@@ -37,14 +48,20 @@ const Login = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             localStorage.setItem('accessToken', data.accessToken);
-            navigate(from, { replace: true })
+            const token = data.accessToken;
+            if(token){
+                navigate(from, { replace: true })
+            }
+            else{
+                signOut(auth)
+                navigate('/login')
+            }
         })
     }
 
     if (user) {
-        console.log(user);
+        // console.log(user);
         // navigate(from, { replace: true })
     }
 
