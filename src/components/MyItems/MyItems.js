@@ -29,7 +29,6 @@ const MyItems = () => {
                 setProducts(data);
             }
             catch(error){
-                console.log(error);
                 if(error.response.status === 401 || error.response.status === 403){
                     navigate('/login');
                     signOut(auth)
