@@ -8,7 +8,8 @@ The Warehouse is an Inventory Managment website
 
     * Project Details
         * The Warehouse is an Inventory Management website based web application
-        * It manage inventory by 4 different routes called Manage Item, Add Item, Update Item, My Items
+        * It manage inventory by 6 different routes called Home, Blogs, Manage Item, Add Item, Update Item, My Items
+        * On Home page it has a Carousel Banner, Inventory Products section, Testimonials section, Our Partners secion and a Footer for all Pages 
         * On Manage Item page user can see all products, and can delete, update, and select the product for my item page.
         * On Add Item page user can add a new item to the inventory by fill up a form
         * On Update Item page user can see products datails like sold amount, supplier etc and can delever a item by clicking delevered button, and can restock the product amount by using restock form
