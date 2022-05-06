@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import TableRow from '../TableRow/TableRow';
 
@@ -20,12 +21,9 @@ const ManageItems = () => {
 
     useEffect(() => {
         const url = `https://young-spire-99179.herokuapp.com/product/${productId}`
-        console.log(url);
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                const selectedProduct = { ...data, email: user.email };
                 fetch(`https://young-spire-99179.herokuapp.com/myItems/${data._id}`, {
                     method: 'PUT',
                     headers: {
@@ -35,10 +33,9 @@ const ManageItems = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
-                        // if (data.acknowledged) {
-                        //     alert('New Item Selected Successfully')
-                        // }
+                        if (data.acknowledged) {
+                            toast('Item Selected Successfully')
+                        }
                     })
             })
     }, [productId])
@@ -60,14 +57,11 @@ const ManageItems = () => {
     }
 
     const handleUpdateItem = (id) => {
-        console.log('clicked', id);
         navigate(`/inventory/${id}`)
     }
 
     const handleSelectedItem = id => {
-        console.log('selected', id);
         setProductId(id)
-
     }
     return (
         <div style={{minHeight : '70vh'}} className='container'>

@@ -19,9 +19,9 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
 
-    const [updateProfile, updating, error1] = useUpdateProfile(auth);
+    const [updateProfile, updating] = useUpdateProfile(auth);
 
-    const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth);
+    const [sendEmailVerification, sending] = useSendEmailVerification(auth);
 
     const from = location.state?.from?.pathname || "/";
 
@@ -57,17 +57,13 @@ const SignUp = () => {
         else{
             setErrorMessage('Your Password Mismatched')
         }
-        console.log(email, password);
     }
 
     if(updating || sending || loading){
         <Loading></Loading>
     }
 
-    if (user) {
-        console.log(user);
-        // navigate('/')
-    }
+    
     return (
         <div className='row'>
             <div style={{ minHeight: "400px" }} className='col-lg-6 col-md-8 col-10 mx-auto bg-secondary p-4 rounded my-5 py-5'>

@@ -15,7 +15,7 @@ const MyItemCard = ({product, handleDeleteMyItem}) => {
                                 <p className='fw-light'>Price: {product.price}</p>
                                 <p className='fw-bold'>Quantity: {product.quantity}</p>
                                 <p><small>Supplier Name: {product.supplier}</small></p>
-                                {product.description}
+                                {product.description.slice(0,200)}
                             </Card.Text>
                             <button onClick={()=>handleDeleteMyItem(product._id)} className='btn btn-danger w-100'>Delete</button>
                         </Card.Body>

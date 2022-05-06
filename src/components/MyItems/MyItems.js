@@ -25,7 +25,6 @@ const MyItems = () => {
                         authorization: `Bearer ${localStorage.getItem('accessToken')}`
                     }
                 });
-                console.log(data);
                 setProducts(data);
             }
             catch(error){
@@ -39,9 +38,7 @@ const MyItems = () => {
     }, [isReload])
 
     const handleDeleteMyItem = id => {
-        console.log('clicked', id);
         const url = `https://young-spire-99179.herokuapp.com/myItems/${id}`;
-        console.log(url);
         const procced = window.confirm('Are You Sure to Delete This Product?');
         if (procced) {
             fetch(url, {
@@ -49,9 +46,7 @@ const MyItems = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     if (data.deletedCount > 0) {
-                        console.log(data);
                         setIsReload(!isReload)
                         alert('Product Deleted Successfully!')
                     }
@@ -61,8 +56,8 @@ const MyItems = () => {
 
     return (
         <div style={{minHeight : '70vh'}} className='container'>
-            <h2 className='text-center my-4'>My Items {products.length}</h2>
-            <div className=''>
+            <h2 className='text-center my-4'>My Items</h2>
+            <div>
                 <Row xs={1} md={2} lg={3} className="g-4">
                     {
                         products?.map(product => <MyItemCard

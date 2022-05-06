@@ -29,7 +29,6 @@ const SocialLogin = () => {
             <div>
                 <button onClick={handleGoogleSignIn} className='btn btn-dark text-white w-50 d-block mx-auto mb-3 p-2 fs-5 fw-light'>Google Sign In</button>
                 <button className='btn btn-dark text-white w-50 d-block mx-auto mb-3 p-2 fs-5 fw-light'>Facebook Sign In</button>
-                {/* <button onClick={handleGithubSignIn} className='btn btn-dark text-white w-50 d-block mx-auto p-2 fs-5 fw-light'>Github Sign In</button> */}
             </div>
         </div>
     );

@@ -23,7 +23,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
     if(error){
         navigate('/login')
@@ -38,7 +38,6 @@ const Login = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         await signInWithEmailAndPassword(email, password)
-        // console.log(email, password);
         fetch('https://young-spire-99179.herokuapp.com/getToken',{
             method : 'POST',
             headers : {
@@ -56,14 +55,10 @@ const Login = () => {
         })
     }
 
-    if (user) {
-        // console.log(user);
-        // navigate(from, { replace: true })
-    }
+    
 
     const handleResetPassword = async () => {
         const email = emailRef.current.value;
-        console.log(email);
         if (email) {
             await sendPasswordResetEmail(email)
             await toast('Check Email to Reset Password')

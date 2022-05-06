@@ -46,7 +46,6 @@ const Header = () => {
                                 className={({ isActive }) => (isActive ? "text-decoration-none text-white " : "text-decoration-none text-secondary")}
                                 to='/signup'
                             >
-                                {/* Sign up */}
                             </NavLink>
                             }
                             {
@@ -62,7 +61,6 @@ const Header = () => {
                                 className={({ isActive }) => (isActive ? "text-decoration-none text-white" : "text-decoration-none text-secondary")}
                                 to='/signup'
                             >
-                                {/* Sign up */}
                             </NavLink>
                             }
                             {
@@ -78,7 +76,6 @@ const Header = () => {
                                 className={({ isActive }) => (isActive ? "text-decoration-none text-white" : "text-decoration-none text-secondary ")}
                                 to='/signup'
                             >
-                                {/* Sign up */}
                             </NavLink>
                             }
                             {

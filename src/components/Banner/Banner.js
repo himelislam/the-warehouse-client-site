@@ -13,8 +13,8 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
-                        <h1 className='fw-light'>The Warehouse</h1>
-                        <p className='fw-light'>Manage all your inventories here</p>
+                        <h1 className='fw-bold fs-1'>The Warehouse</h1>
+                        <p className='fw-semibold'>Manage all your inventories here</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -24,8 +24,8 @@ const Banner = () => {
                         alt="Third slide"
                     />
                     <Carousel.Caption>
-                        <h1 className='fw-light'>The Warehouse</h1>
-                        <p className='fw-light'>Manage all your inventories here</p>
+                        <h1 className='fw-bold'>The Warehouse</h1>
+                        <p className='fw-semibold'>Manage all your inventories here</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

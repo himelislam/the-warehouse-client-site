@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Inventory = () => {
     const { id } = useParams();
@@ -27,7 +28,7 @@ const Inventory = () => {
         .then(data => {
             if(data.modifiedCount > 0){
                 setIsReload(!isReload)
-                alert('One Item Delevered Succefully')
+                toast('One Item Delevered Successfully')
             }
         })
     }
@@ -36,7 +37,6 @@ const Inventory = () => {
         event.preventDefault();
         const quantity = event.target.quantity.value;
         const newQuantity = parseInt(quantity) + parseInt(product.quantity);
-        console.log(newQuantity);
         const url = `https://young-spire-99179.herokuapp.com/product/restock/${id}`
         fetch(url, {
             method : 'PATCH',
@@ -49,8 +49,7 @@ const Inventory = () => {
         .then(data => {
             if(data.matchedCount > 0){
                 setIsReload(!isReload);
-                console.log(data);
-                alert('new stock added')
+                toast('New Stock Added')
                 event.target.reset()
             }
         })
@@ -100,7 +99,6 @@ const Inventory = () => {
                             </Card.Body>
                         </Card>
                     </Col>
-                    {/* ))} */}
                 </Row>
             </div>
         </div>

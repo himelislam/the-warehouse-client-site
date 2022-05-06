@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -8,8 +7,6 @@ const AddItems = () => {
 
     const handleAddNewProduct = event => {
         event.preventDefault();
-        const userEmail = user.email;
-        console.log(userEmail);
         const newProduct = {
             name : event.target.name.value,
             price : event.target.price.value,
@@ -29,7 +26,6 @@ const AddItems = () => {
         })
         .then(res => res.json())
         .then(data => {
-            // console.log(data);
             if(data.acknowledged){
                 alert('New Item Added Successfully')
                 event.target.reset()
