@@ -68,7 +68,7 @@ const ManageItems = () => {
             <hr />
             <h2 className='text-center my-4'>Manage Inventory</h2>
             <hr />
-            <Link to='/addItem'><button className='btn btn-secondary w-50 p-2 mx-auto d-block my-4'>Add New Item</button></Link>
+            <Link to='/addItem' style={{ textDecoration: 'none' }}><button className='btn btn-secondary w-50 p-2 mx-auto d-block my-4'>Add New Item</button></Link>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>

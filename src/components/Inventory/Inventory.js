@@ -94,7 +94,7 @@ const Inventory = () => {
                                             <input className='btn btn-dark w-100 my-3' type="submit" value="Restock" />
                                         </form>
                                     </div>
-                                    <Link to='/manageInventory'><button className='btn btn-dark w-100 mx-auto d-block p-4 fs-5 fw-bold text-decoration-none mt-4'>Manage Inventories</button></Link>
+                                    <Link to='/manageInventory' style={{ textDecoration: 'none' }}><button className='btn btn-dark w-100 mx-auto d-block p-4 fs-5 fw-bold text-decoration-none mt-4'>Manage Inventories</button></Link>
                                 </Card.Text>
                             </Card.Body>
                         </Card>

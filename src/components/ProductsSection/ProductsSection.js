@@ -29,7 +29,7 @@ const ProductsSection = () => {
                 </Row>
             </div>
             <div className='mb-4'>
-                <Link to='/manageInventory'><button className='btn btn-dark text-center w-50 p-3 fw-bold d-block mx-auto mb-4'>Manage Inventory</button></Link>
+                <Link to='/manageInventory' style={{ textDecoration: 'none' }}><button className='btn btn-dark text-center w-50 p-3 fw-bold d-block mx-auto mb-4'>Manage Inventory</button></Link>
                 <hr />
             </div>
         </div>
