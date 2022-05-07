@@ -66,6 +66,9 @@ const SignUp = () => {
     
     return (
         <div className='row'>
+            <hr className='mt-4' />
+            <h2 className='text-center mb-4'>Sign Up Here</h2>
+            <hr />
             <div style={{ minHeight: "400px" }} className='col-lg-6 col-md-8 col-10 mx-auto bg-secondary p-4 rounded my-5 py-5'>
                 <Form onSubmit={handleUserSignUp}>
                     <Form.Group className="mb-4" controlId="formBasicEmail">

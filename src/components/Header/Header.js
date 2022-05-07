@@ -39,7 +39,7 @@ const Header = () => {
                                 className={({ isActive }) => (isActive ? "text-decoration-none text-white me-3" : "text-decoration-none text-secondary me-3")}
                                 to='/manageInventory'
                             >
-                                Manage Item
+                                Manage Product
                             </NavLink>
                             :
                             <NavLink
@@ -54,7 +54,7 @@ const Header = () => {
                                 className={({ isActive }) => (isActive ? "text-decoration-none text-white me-3" : "text-decoration-none text-secondary me-3")}
                                 to='/addItem'
                             >
-                                Add Item
+                                Add Product
                             </NavLink>
                             :
                             <NavLink
@@ -69,7 +69,7 @@ const Header = () => {
                                 className={({ isActive }) => (isActive ? "text-decoration-none text-white me-3" : "text-decoration-none text-secondary me-3")}
                                 to='/myItem'
                             >
-                                My Item
+                                My Product
                             </NavLink>
                             :
                             <NavLink

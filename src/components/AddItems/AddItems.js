@@ -1,5 +1,6 @@
 import { Button, Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddItems = () => {
@@ -27,7 +28,7 @@ const AddItems = () => {
         .then(res => res.json())
         .then(data => {
             if(data.acknowledged){
-                alert('New Item Added Successfully')
+                toast('New Product Added Successfully')
                 event.target.reset()
             }
         })
@@ -36,7 +37,9 @@ const AddItems = () => {
     
     return (
         <div className='container'>
-            <h2 className='text-center my-4'>Add New Item</h2>
+            <hr />
+            <h2 className='text-center my-4'>Add New Product</h2>
+            <hr />
            
             <div className='border border-dark p-4'>
                 <Form onSubmit={handleAddNewProduct}>

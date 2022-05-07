@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import MyItemCard from '../MyItemCard/MyItemCard';
 
@@ -48,7 +49,7 @@ const MyItems = () => {
                 .then(data => {
                     if (data.deletedCount > 0) {
                         setIsReload(!isReload)
-                        alert('Product Deleted Successfully!')
+                        toast('Product Deleted Successfully')
                     }
                 })
         }
@@ -56,7 +57,9 @@ const MyItems = () => {
 
     return (
         <div style={{minHeight : '70vh'}} className='container'>
-            <h2 className='text-center my-4'>My Items</h2>
+            <hr />
+            <h2 className='text-center my-4'>My Products</h2>
+            <hr />
             <div>
                 <Row xs={1} md={2} lg={3} className="g-4">
                     {

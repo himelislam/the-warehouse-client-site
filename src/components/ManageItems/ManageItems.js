@@ -34,7 +34,7 @@ const ManageItems = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.acknowledged) {
-                            toast('Item Selected Successfully')
+                            toast('Product Selected Successfully')
                         }
                     })
             })
@@ -42,7 +42,7 @@ const ManageItems = () => {
 
     const handleDeleteItem = (id) => {
         const url = `https://young-spire-99179.herokuapp.com/product/${id}`
-        const proceed = window.confirm('Are you Sure to Delete this Item?')
+        const proceed = window.confirm('Are you Sure to Delete this Product?')
         if (proceed) {
             fetch(url, {
                 method: 'DELETE'
@@ -65,7 +65,9 @@ const ManageItems = () => {
     }
     return (
         <div style={{minHeight : '70vh'}} className='container'>
+            <hr />
             <h2 className='text-center my-4'>Manage Inventory</h2>
+            <hr />
             <Link to='/addItem'><button className='btn btn-secondary w-50 p-2 mx-auto d-block my-4'>Add New Item</button></Link>
             <Table striped bordered hover size="sm">
                 <thead>
