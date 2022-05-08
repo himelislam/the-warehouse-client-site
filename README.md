@@ -21,12 +21,17 @@ The Warehouse is an Inventory Managment website
             * React (Javascript Library)
             * React Bootstrap
             * Firebase
-            * Firebase Custom Hook
+            * React Firebase Hook
+            * React Hook Form
             * React Toastify
             * React Router
+            * Axios
         * For Back-end
             * Node.js
             * Express js
+            * MongoDB
             * cors
+            * dotenv
             * nodemon
+            * jsonwebtoken
             * Heroku 

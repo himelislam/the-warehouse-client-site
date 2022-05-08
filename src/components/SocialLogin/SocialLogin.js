@@ -7,17 +7,21 @@ const SocialLogin = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+    const from = location.state?.from?.pathname || "/";
+
 
     const handleGoogleSignIn = event => {
         event.preventDefault();
         signInWithGoogle();
     }
 
-    if(user){
-        navigate(from, {replace: true})
+    if (user) {
+        navigate(from, { replace: true })
     }
+
+
     return (
         <div>
             <div className='d-flex align-items-center my-4'>

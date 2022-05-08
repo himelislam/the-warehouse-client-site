@@ -13,7 +13,6 @@ const Footer = () => {
                     <Link to='/myItem' style={{ textDecoration: 'none' }} ><span className='d-block text-white text-decoration-none'>My Products</span></Link>
                     <Link to='/login' style={{ textDecoration: 'none' }} ><span className='d-block text-white text-decoration-none'>Login</span></Link>
                     <Link to='/signup' style={{ textDecoration: 'none' }} ><span className='d-block text-white text-decoration-none'>Sign Up</span></Link>
-
                 </div>
                 <div className='col-lg-6 col-md-6 col-12 my-4'>
                     <h6>Our Partners</h6>

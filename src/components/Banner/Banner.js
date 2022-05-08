@@ -11,7 +11,6 @@ const Banner = () => {
                         src="https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80"
                         alt="Second slide"
                     />
-
                     <Carousel.Caption>
                         <h1 className='fw-bold fs-1'>The Warehouse</h1>
                         <p className='fw-semibold'>Manage all your inventories here</p>

@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
                                 <h6 className='fw-light'>Price: {product.price}</h6>
                                 <h6 className='fw-bold'>Quantity: {product.quantity}</h6>
                                 <h6><small>Supplier Name: {product.supplier}</small></h6>
-                                {product.description.slice(0,200)}
+                                {product.description.slice(0, 200)}
                             </Card.Text>
                             <Link to={`inventory/${product._id}`}><button className='btn btn-secondary w-100'>Update</button></Link>
                         </Card.Body>

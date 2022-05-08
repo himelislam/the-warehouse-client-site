@@ -7,13 +7,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 import MyItemCard from '../MyItemCard/MyItemCard';
 
 const MyItems = () => {
     const [user] = useAuthState(auth)
     const [products, setProducts] = useState([]);
     const [isReload, setIsReload] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -36,7 +37,9 @@ const MyItems = () => {
             }
         }
         getMyItems()
-    }, [isReload])
+    }, [isReload]);
+
+
 
     const handleDeleteMyItem = id => {
         const url = `https://young-spire-99179.herokuapp.com/myItems/${id}`;
@@ -54,6 +57,12 @@ const MyItems = () => {
                 })
         }
     }
+
+
+    if(products.length === 0){
+        <Loading></Loading>
+    }
+    
 
     return (
         <div style={{minHeight : '70vh'}} className='container'>

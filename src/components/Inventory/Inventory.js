@@ -8,54 +8,59 @@ const Inventory = () => {
     const [product, setProduct] = useState({});
     const [isReload, setIsReload] = useState(false);
 
+
     useEffect(() => {
         const url = `https://young-spire-99179.herokuapp.com/product/${id}`
         fetch(url)
-        .then(res => res.json())
-        .then(data => setProduct(data))
-    },[isReload])
+            .then(res => res.json())
+            .then(data => setProduct(data))
+    }, [isReload]);
+
 
     const handleDeleverItem = id => {
         const url = `https://young-spire-99179.herokuapp.com/product/${id}`
         fetch(url, {
-            method : 'PATCH',
-            headers : {
-                'content-type' : 'application/json'
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
             },
-            body : JSON.stringify(product)
+            body: JSON.stringify(product)
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.modifiedCount > 0){
-                setIsReload(!isReload)
-                toast('One Item Delevered Successfully')
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    setIsReload(!isReload)
+                    toast('One Item Delevered Successfully')
+                }
+            })
     }
 
-    const handleRestockItem = event =>{
+
+    const handleRestockItem = event => {
         event.preventDefault();
         const quantity = event.target.quantity.value;
         const newQuantity = parseInt(quantity) + parseInt(product.quantity);
         const url = `https://young-spire-99179.herokuapp.com/product/restock/${id}`
         fetch(url, {
-            method : 'PATCH',
-            headers : {
-                'content-type' : 'application/json'
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
             },
-            body : JSON.stringify({newQuantity})
+            body: JSON.stringify({ newQuantity })
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.matchedCount > 0){
-                setIsReload(!isReload);
-                toast('New Stock Added Successfully')
-                event.target.reset()
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.matchedCount > 0) {
+                    setIsReload(!isReload);
+                    toast('New Stock Added Successfully')
+                    event.target.reset()
+                }
+            })
     }
+
+    
     return (
-        <div style={{minHeight : '70vh'}} className='container'>
+        <div style={{ minHeight: '70vh' }} className='container'>
             <h2 className='text-center my-4'>Update Product</h2>
             <div>
                 <Row xs={1} md={2} lg={2} className="g-4">
@@ -81,7 +86,7 @@ const Inventory = () => {
                                 <h2 className='text-center fw-light mb-3'>Delever Product</h2>
                                 <h4 className='text-center fw-light mb-3'>Product Name : {product.name}</h4>
                                 <h5 className='text-center fw-light mb-3'>Product Quantity : {product.quantity}</h5>
-                                <button onClick={()=>handleDeleverItem(product._id)} className='btn btn-dark w-100'>Delevered</button>
+                                <button onClick={() => handleDeleverItem(product._id)} className='btn btn-dark w-100'>Delevered</button>
                             </div>
                             <Card.Body>
                                 <Card.Text>

@@ -14,17 +14,13 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    
+    const [signInWithEmailAndPassword, user, loading, error, ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+    
     const from = location.state?.from?.pathname || "/";
 
-    const [
-        signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useSignInWithEmailAndPassword(auth);
-
-    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-
+    
     if (user) {
         navigate(from, { replace: true })
     }
@@ -60,7 +56,6 @@ const Login = () => {
     }
 
 
-
     const handleResetPassword = async () => {
         const email = emailRef.current.value;
         if (email) {
@@ -71,6 +66,8 @@ const Login = () => {
             await toast('Please Enter Your Email Address')
         }
     }
+
+
     return (
         <div className='row'>
             <hr className='mt-4' />

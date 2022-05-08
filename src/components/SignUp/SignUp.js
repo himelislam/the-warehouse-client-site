@@ -12,18 +12,15 @@ const SignUp = () => {
     const navigate = useNavigate();
     const location = useLocation()
     const [errorMessage, setErrorMessage] = useState('');
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
 
+
+    const [createUserWithEmailAndPassword, user, loading, error,] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating] = useUpdateProfile(auth);
-
     const [sendEmailVerification, sending] = useSendEmailVerification(auth);
 
+
     const from = location.state?.from?.pathname || "/";
+
 
     const handleUserSignUp = async event => {
         event.preventDefault();
@@ -31,39 +28,40 @@ const SignUp = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         const confirmPassword = event.target.confirmPassword.value;
-        if(password === confirmPassword){
+        if (password === confirmPassword) {
             await createUserWithEmailAndPassword(email, password)
 
-            fetch('https://young-spire-99179.herokuapp.com/getToken',{
-            method : 'POST',
-            headers : {
-                'content-type' : 'application/json'
-            },
-            body : JSON.stringify({email})
-        })
-        .then(res => res.json())
-        .then(data => {
-            localStorage.setItem('accessToken', data.accessToken);
-            const token = data.accessToken;
-            if(token){
-                navigate(from, { replace: true })
-            }
-        })
+            fetch('https://young-spire-99179.herokuapp.com/getToken', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    localStorage.setItem('accessToken', data.accessToken);
+                    const token = data.accessToken;
+                    if (token) {
+                        navigate(from, { replace: true })
+                    }
+                })
 
             await updateProfile({ displayName })
             await sendEmailVerification()
             toast('Email verification mail sent')
         }
-        else{
+        else {
             setErrorMessage('Your Password Mismatched')
         }
     }
 
-    if(updating || sending || loading){
+
+    if (updating || sending || loading) {
         <Loading></Loading>
     }
 
-    
+
     return (
         <div className='row'>
             <hr className='mt-4' />

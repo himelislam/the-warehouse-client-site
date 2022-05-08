@@ -9,38 +9,36 @@ const AddItems = () => {
     const handleAddNewProduct = event => {
         event.preventDefault();
         const newProduct = {
-            name : event.target.name.value,
-            price : event.target.price.value,
-            img : event.target.img.value,
-            description : event.target.description.value,
-            quantity : event.target.quantity.value,
-            supplier : event.target.supplier.value,
-            email : user.email
+            name: event.target.name.value,
+            price: event.target.price.value,
+            img: event.target.img.value,
+            description: event.target.description.value,
+            quantity: event.target.quantity.value,
+            supplier: event.target.supplier.value,
+            email: user.email
         }
         console.log(newProduct);
         fetch('https://young-spire-99179.herokuapp.com/myItems', {
-            method : 'POST',
-            headers : {
-                'content-type' : 'application/json'
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body : JSON.stringify(newProduct)
+            body: JSON.stringify(newProduct)
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.acknowledged){
-                toast('New Product Added Successfully')
-                event.target.reset()
-            }
-        })
-        
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast('New Product Added Successfully')
+                    event.target.reset()
+                }
+            })
     }
-    
+
     return (
         <div className='container'>
             <hr />
             <h2 className='text-center my-4'>Add New Product</h2>
             <hr />
-           
             <div className='border border-dark p-4'>
                 <Form onSubmit={handleAddNewProduct}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">

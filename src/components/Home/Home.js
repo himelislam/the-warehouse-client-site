@@ -7,7 +7,7 @@ import Testimonials from '../Testimonials/Testimonials';
 
 const Home = () => {
     return (
-        <div  style={{minHeight : '70vh'}}>
+        <div style={{ minHeight: '70vh' }}>
             <Banner></Banner>
             <ProductsSection></ProductsSection>
             <Testimonials></Testimonials>

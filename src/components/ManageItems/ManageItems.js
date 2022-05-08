@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 import TableRow from '../TableRow/TableRow';
 
 const ManageItems = () => {
@@ -11,13 +12,16 @@ const ManageItems = () => {
     const [products, setProducts] = useState([]);
     const [isReload, setIsReload] = useState(false);
     const [productId, setProductId] = useState('');
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         fetch('https://young-spire-99179.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [isReload])
+    }, [isReload]);
+
+
 
     useEffect(() => {
         const url = `https://young-spire-99179.herokuapp.com/product/${productId}`
@@ -29,7 +33,7 @@ const ManageItems = () => {
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify({email : user.email})
+                    body: JSON.stringify({ email: user.email })
                 })
                     .then(res => res.json())
                     .then(data => {
@@ -38,7 +42,8 @@ const ManageItems = () => {
                         }
                     })
             })
-    }, [productId])
+    }, [productId]);
+
 
     const handleDeleteItem = (id) => {
         const url = `https://young-spire-99179.herokuapp.com/product/${id}`
@@ -56,15 +61,24 @@ const ManageItems = () => {
         }
     }
 
+
     const handleUpdateItem = (id) => {
         navigate(`/inventory/${id}`)
     }
 
+
     const handleSelectedItem = id => {
         setProductId(id)
     }
+
+
+    if (products.length === 0) {
+        <Loading></Loading>
+    }
+
+    
     return (
-        <div style={{minHeight : '70vh'}} className='container'>
+        <div style={{ minHeight: '70vh' }} className='container'>
             <hr />
             <h2 className='text-center my-4'>Manage Inventory</h2>
             <hr />

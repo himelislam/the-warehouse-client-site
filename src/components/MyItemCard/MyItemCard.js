@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 
 
-const MyItemCard = ({product, handleDeleteMyItem}) => {
+const MyItemCard = ({ product, handleDeleteMyItem }) => {
     return (
         <div>
             {Array.from({ length: 1 }).map((_, idx) => (
@@ -15,9 +15,9 @@ const MyItemCard = ({product, handleDeleteMyItem}) => {
                                 <p className='fw-light'>Price: {product.price}</p>
                                 <p className='fw-bold'>Quantity: {product.quantity}</p>
                                 <p><small>Supplier Name: {product.supplier}</small></p>
-                                {product.description.slice(0,200)}
+                                {product.description.slice(0, 200)}
                             </Card.Text>
-                            <button onClick={()=>handleDeleteMyItem(product._id)} className='btn btn-danger w-100'>Delete</button>
+                            <button onClick={() => handleDeleteMyItem(product._id)} className='btn btn-danger w-100'>Delete</button>
                         </Card.Body>
                     </Card>
                 </Col>

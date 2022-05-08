@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 import ProductCard from '../ProductCard/ProductCard';
 
 const ProductsSection = () => {
@@ -10,8 +11,13 @@ const ProductsSection = () => {
         fetch('https://young-spire-99179.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
+    }, []);
 
+
+    if(products.length === 0){
+        <Loading></Loading>
+    }
+    
     
     return (
         <div className='mb-4 container'>
