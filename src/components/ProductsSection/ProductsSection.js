@@ -22,7 +22,7 @@ const ProductsSection = () => {
     return (
         <div className='mb-4 container'>
             <hr />
-            <h2 className='text-center fw-light my-4'>Inventory Products</h2>
+            <h2 className='text-center fw-light my-4'>Inventoryy Products</h2>
             <hr />
             <div className='mb-4'>
                 <Row xs={1} md={2} lg={3} className="g-4">
